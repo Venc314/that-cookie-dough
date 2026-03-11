@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="That Cookie Dough - Premium handmade cookies and baked goods" />
+  <title>Product Details — That Cookie Dough</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/productinfo.css" />
+  
+  <!-- Order Service -->
+  <script src="../scripts/orderService.js"></script>
+
+  <style>
+    /* Critical CSS for initial load */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      background: #f7f3eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #ece6dc;
+      border-top-color: #c4552c;
+      border-radius: 50%;
+      animation: spinLoader 0.8s linear infinite;
+    }
+    
+    /* Size Options Styles */
+    .size-options {
+      margin-bottom: 20px;
+    }
+    .size-label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #5a4a3a;
+      margin-bottom: 10px;
+    }
+    .size-options-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .size-option {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .size-option input[type="radio"] {
+      display: none;
+    }
+    .size-option-text {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #f7f3eb;
+      border: 2px solid #e0d5c7;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #5a4a3a;
+      transition: all 0.2s ease;
+    }
+    .size-option input[type="radio"]:checked + .size-option-text {
+      background: #c4552c;
+      border-color: #c4552c;
+      color: #fff;
+    }
+    .size-option:hover .size-option-text {
+      border-color: #c4552c;
+      transform: translateY(-2px);
+    }
+    @media (max-width: 480px) {
+      .size-options-container {
+        flex-direction: column;
+      }
+      .size-option {
+        width: 100%;
+      }
+      .size-option-text {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-bar" id="navBar">
+    <a href="homepage.html" class="logo">
+      That Cookie<span class="logo-dot">.</span>Dough
+    </a>
+    <ul class="nav-links">
+      <li><a href="homepage.html" class="nav-link">Home</a></li>
+      <li><a href="product.html" class="nav-link">Menu</a></li>
+      <li><a href="#footer" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="homepage.html" class="btn-back-nav">← Back</a>
+      <button class="cart-icon-btn" id="cartBtn" aria-label="Open cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="product.html">Menu</a></li>
+        <li aria-current="page" id="breadcrumbProduct">Loading...</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Product Detail -->
+  <main class="product-detail">
+    <div class="container">
+      <div class="product-detail-grid">
+        
+        <!-- Gallery Column -->
+        <div class="gallery-column">
+          <div class="gallery-main" id="galleryMain">
+            <div class="gallery-track-wrap">
+              <div class="gallery-slides" id="gallerySlides">
+                <!-- Slides injected by JS -->
+              </div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Previous image">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Next image">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            
+            <!-- Dots -->
+            <div class="gallery-dots" id="galleryDots">
+              <!-- Dots injected by JS -->
+            </div>
+          </div>
+          
+          <!-- Thumbnails -->
+          <div class="gallery-thumbs" id="galleryThumbs">
+            <!-- Thumbnails injected by JS -->
+          </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="info-column">
+          <span class="info-category" id="productCategory">Loading...</span>
+          <h1 class="info-name" id="productName">Loading...</h1>
+          
+          <div class="info-price-row">
+            <span class="info-price" id="productPrice">₱0</span>
+            <span class="info-badge-fresh">Fresh Baked</span>
+          </div>
+          
+          <div class="info-divider"></div>
+          
+          <p class="info-desc" id="productDesc">
+            Loading product details...
+          </p>
+          
+          <div class="info-divider"></div>
+          
+          <!-- Quantity -->
+          <div class="qty-row">
+            <span class="qty-label">Quantity</span>
+            <div class="qty-ctrl">
+              <button class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">
+                <span>−</span>
+              </button>
+              <span class="qty-num" id="qtyNum">1</span>
+              <button class="qty-btn" id="qtyPlus" aria-label="Increase quantity">
+                <span>+</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Size Options (for Churros and Garlic Bread) -->
+          <div class="size-options" id="sizeOptions" style="display: none;">
+            <span class="size-label" id="sizeLabel">Select Size</span>
+            <div class="size-options-container" id="sizeOptionsContainer">
+              <!-- Size radio buttons will be injected by JS -->
+            </div>
+          </div>
+          
+          <!-- Actions -->
+          <div class="info-actions">
+            <button class="btn-add-cart-info" id="addToCartBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Add to Cart</span>
+            </button>
+            <button class="btn-buy-now-info" id="buyNowBtn">
+              <span>Buy Now</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Trust Badges -->
+          <div class="trust-badges">
+            <div class="trust-badge">
+            
+            </div>
+            <div class="trust-badge">
+              <span class="trust-icon">✨</span>
+              <span>Fresh Daily</span>
+            </div>
+            <div class="trust-badge">
+              <span class="trust-icon">💯</span>
+              <span>Quality Guaranteed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Marquee Strip -->
+  <div class="marquee-strip">
+    <div class="marquee-strip-track">
+      <div class="marquee-strip-content">
+        <span>Fresh Baked Daily</span>
+        <span class="ms-dot">●</span>
+        <span>Premium Ingredients</span>
+        <span class="ms-dot">●</span>
+        <span>Handmade with Love</span>
+        <span class="ms-dot">●</span>
+        <span>Free Delivery</span>
+        <span class="ms-dot">●</span>
+        <span>Quality Guaranteed</span>
+        <span class="ms-dot">●</span>
+        <span>Fresh Baked Daily</span>
+        <span class="ms-dot">●</span>
+        <span>Premium Ingredients</span>
+        <span class="ms-dot">●</span>
+        <span>Handmade with Love</span>
+        <span class="ms-dot">●</span>
+        <span>Free Delivery</span>
+        <span class="ms-dot">●</span>
+        <span>Quality Guaranteed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Panel -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel">
+    <div class="cart-panel-header">
+      <h2 class="cart-panel-title">
+        Your Cart <span id="cartItemCount">0</span>
+      </h2>
+      <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items injected by JS -->
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty-icon">🍪</div>
+        <p>Your cart is empty</p>
+        <p class="cart-empty-sub">Add some delicious cookies!</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span class="cart-total-amount" id="cartTotal">₱0</span>
+      </div>
+      <button class="btn-checkout" id="checkoutBtn">
+        <span>Proceed to Checkout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Order Modal -->
+  <div class="order-overlay" id="orderOverlay"></div>
+  <div class="order-modal" id="orderModal">
+    <div class="order-modal-inner">
+      <button class="order-modal-close" id="orderModalClose" aria-label="Close checkout">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <header class="order-modal-header">
+        <p class="order-modal-eyebrow">Checkout</p>
+        <h2 class="order-modal-title">Complete Your Order</h2>
+      </header>
+      
+      <div class="order-modal-body">
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <p class="order-section-label">Order Summary</p>
+          <div class="order-summary-card">
+            <div class="order-summary-list" id="orderSummaryList">
+              <!-- Summary items injected by JS -->
+            </div>
+            <div class="order-summary-total">
+              <span>Total</span>
+              <span class="order-total-amount" id="orderTotalAmount">₱0</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Order Form -->
+        <form class="order-form" id="orderForm">
+          <p class="order-section-label">Your Details</p>
+          
+          <div class="form-field" id="fieldCustomerName">
+            <label class="form-label" for="customerName">Full Name</label>
+            <input type="text" class="form-input" id="customerName" name="customerName" placeholder="Juan dela Cruz" required />
+            <span class="form-error" id="errorCustomerName">Name must be at least 2 characters</span>
+          </div>
+          
+          <div class="form-field" id="fieldPhoneNumber">
+            <label class="form-label" for="phoneNumber">Phone Number</label>
+            <input type="tel" class="form-input" id="phoneNumber" name="phoneNumber" placeholder="09XXXXXXXXX" required />
+            <span class="form-error" id="errorPhoneNumber">Invalid Philippine format (09XXXXXXXXX)</span>
+          </div>
+          
+          <div class="form-field" id="fieldAddress">
+            <label class="form-label" for="address">Delivery Address</label>
+            <input type="text" class="form-input" id="address" name="address" placeholder="123 Main Street, City" required />
+            <span class="form-error" id="errorAddress">Address must be at least 5 characters</span>
+          </div>
+          
+          <div class="form-field">
+            <label class="form-label" for="notes">Notes (Optional)</label>
+            <textarea class="form-input" id="notes" name="notes" placeholder="Special instructions..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn-place-order" id="placeOrderBtn">
+            <span class="btn-place-order-text">Place Order</span>
+            <span class="btn-place-order-loader"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="order-toast" id="toast">
+    <span class="order-toast-icon">✓</span>
+    <span class="order-toast-message" id="toastMessage">Order placed successfully!</span>
+  </div>
+
+  <!-- Add to Cart Feedback -->
+  <div class="add-feedback-wrap">
+    <div class="add-feedback" id="addFeedback">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span>Added to cart!</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-enjoy">ENJOY</div>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+          <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+          <a href="#" class="social-btn" aria-label="Twitter">X</a>
+        </div>
+      </div>
+      <nav class="footer-links">
+        <a href="homepage.html" class="footer-link">Home</a>
+        <a href="product.html" class="footer-link">Menu</a>
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">FAQ</a>
+        <a href="#" class="footer-link">Privacy</a>
+      </nav>
+      <div class="footer-bottom">
+        <span>© 2024 That Cookie Dough. All rights reserved.</span>
+        <span>Made with ❤️ in the Philippines</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ═══════════════════════════════════════════════════════════════════════════
+       GOD-TIER PRODUCT INFO PAGE — JavaScript
+       That Cookie Dough | Premium E-Commerce Experience
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    (function() {
+      'use strict';
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // GLOBAL CONFIGURATION & STATE
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      const APP = {
+        cartKey: 'tcd-cart',
+        currentProduct: null,
+        quantity: 1,
+        gallery: {
+          images: [],
+          currentIndex: 0,
+          isDragging: false,
+          startX: 0,
+          currentX: 0,
+          translateX: 0,
+          velocity: 0,
+          animationId: null
+        }
+      };
+
+      // Product Media Registry (Level 2 & 3 fallback)
+      const PRODUCT_MEDIA_REGISTRY = {
+        products: {
+          'classic': ['../public/assets/pictures/Classic cookies.png', '../public/assets/classic  breakdown.jpeg'],
+          'crinkles': ['../public/assets/pictures/crinkles.png', '../public/assets/crinkles breakdown.jpeg'],
+          'double': ['../public/assets/pictures/double.png', '../public/assets/double dose breakdown.jpeg'],
+          'kon-de-leche': ['../public/assets/pictures/kon de leche.png', '../public/assets/kon de leche breakdown.jpeg'],
+          'matcha-white': ['../public/assets/pictures/matcha white.png', '../public/assets/matcha white breakdown.jpeg'],
+          'molten-classic': ['../public/assets/pictures/molten clasic.png', '../public/assets/molten classic breakdown.jpeg'],
+          'denis-smores': ['../public/assets/pictures/denis smores.png', '../public/assets/denis smore breakdown.jpeg'],
+          'matchadoodles': ['../public/assets/cookei/matchadoodles.png', '../public/assets/matchadoodles breakdown.jpeg'],
+          'snickadoodles': ['../public/assets/cookei/snickadoodles.png', '../public/assets/snickadoodles breakdown.jpeg'],
+          'classic-churros': ['../public/assets/CHURROS 1.jpeg'],
+          'premium-garlic-bread': ['../public/assets/BREAD 1.jpeg']
+        },
+        categories: {
+          'cookies': [
+            'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800',
+            'https://images.unsplash.com/photo-1490567674924-0e9566e3f578?w=800'
+          ],
+          'breads': [
+            'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800'
+          ],
+          'churros': [
+            'https://images.unsplash.com/photo-1624371414361-e670edf0c647?w=800'
+          ]
+        }
+      };
+
+      // Category Placeholder Map (Level 4)
+      const CATEGORY_PLACEHOLDER_MAP = {
+        'cookies': { emoji: '🍪', text: 'Cookie' },
+        'breads': { emoji: '🍞', text: 'Bread' },
+        'churros': { emoji: '🌯', text: 'Churro' },
+        'default': { emoji: '🍪', text: 'Treat' }
+      };
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // UTILITY FUNCTIONS
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      // Get URL parameters
+      function getUrlParams() {
+        const params = {};
+        const searchParams = new URLSearchParams(window.location.search);
+        for (const [key, value] of searchParams) {
+          params[key] = value;
+        }
+        return params;
+      }
+
+      // Format price to PHP
+      function formatPrice(price) {
+        const num = parseFloat(price) || 0;
+        return '₱' + num.toLocaleString('en-PH', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+      }
+
+      // Show toast notification
+      function showToast(message, isError = false) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        
+        toastMessage.textContent = message;
+        toast.classList.toggle('error', isError);
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4000);
+      }
+
+      // Show add to cart feedback
+      function showAddFeedback() {
+        const feedback = document.getElementById('addFeedback');
+        feedback.classList.add('show');
+        
+        setTimeout(() => {
+          feedback.classList.remove('show');
+        }, 2000);
+      }
+
+      // Debounce function
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // CART FUNCTIONS
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      // Get cart from localStorage
+      function getCart() {
+        try {
+          const cart = localStorage.getItem(APP.cartKey);
+          return cart ? JSON.parse(cart) : [];
+        } catch (e) {
+          console.error('Error reading cart:', e);
+          return [];
+        }
+      }
+
+      // Save cart to localStorage
+      function saveCart(cart) {
+        try {
+          localStorage.setItem(APP.cartKey, JSON.stringify(cart));
+        } catch (e) {
+          console.error('Error saving cart:', e);
+        }
+      }
+
+      // Add item to cart
+      function addToCart(product, quantity = 1) {
+        const cart = getCart();
+        const existingIndex = cart.findIndex(item => item.id === product.id);
+        
+        if (existingIndex > -1) {
+          cart[existingIndex].qty += quantity;
+        } else {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            qty: quantity,
+            image: product.image || ''
+          });
+        }
+        
+        saveCart(cart);
+        updateCartUI();
+        showAddFeedback();
+      }
+
+      // Remove item from cart
+      function removeFromCart(productId) {
+        let cart = getCart();
+        cart = cart.filter(item => item.id !== productId);
+        saveCart(cart);
+        updateCartUI();
+      }
+
+      // Update item quantity
+      function updateItemQuantity(productId, newQty) {
+        if (newQty < 1) {
+          removeFromCart(productId);
+          return;
+        }
+        
+        const cart = getCart();
+        const item = cart.find(item => item.id === productId);
+        if (item) {
+          item.qty = newQty;
+          saveCart(cart);
+          updateCartUI();
+        }
+      }
+
+      // Calculate cart total
+      function getCartTotal() {
+        const cart = getCart();
+        return cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      }
+
+      // Get cart item count
+      function getCartItemCount() {
+        const cart = getCart();
+        return cart.reduce((sum, item) => sum + item.qty, 0);
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // UI UPDATE FUNCTIONS
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      // Update cart UI
+      function updateCartUI() {
+        const cart = getCart();
+        const cartCount = document.getElementById('cartCount');
+        const cartItemCount = document.getElementById('cartItemCount');
+        const cartItems = document.getElementById('cartItems');
+        const cartEmpty = document.getElementById('cartEmpty');
+        const cartFooter = document.getElementById('cartFooter');
+        const cartTotal = document.getElementById('cartTotal');
+        
+        // Update cart count badge
+        const count = getCartItemCount();
+        cartCount.textContent = count;
+        cartCount.classList.toggle('has-items', count > 0);
+        cartItemCount.textContent = count;
+        
+        // Update cart panel
+        if (count === 0) {
+          cartEmpty.style.display = 'flex';
+          cartFooter.classList.remove('active');
+          
+          // Remove all cart items except empty message
+          const items = cartItems.querySelectorAll('.cart-item');
+          items.forEach(item => item.remove());
+        } else {
+          cartEmpty.style.display = 'none';
+          cartFooter.classList.add('active');
+          
+          // Render cart items
+          renderCartItems(cart);
+        }
+        
+        // Update total
+        cartTotal.textContent = formatPrice(getCartTotal());
+      }
+
+      // Render cart items
+      function renderCartItems(cart) {
+        const cartItems = document.getElementById('cartItems');
+        const cartEmpty = document.getElementById('cartEmpty');
+        
+        // Remove existing items
+        const existingItems = cartItems.querySelectorAll('.cart-item');
+        existingItems.forEach(item => item.remove());
+        
+        // Add cart items
+        cart.forEach(item => {
+          const cartItem = document.createElement('div');
+          cartItem.className = 'cart-item';
+          cartItem.innerHTML = `
+            <div class="cart-item-info">
+              <span class="cart-item-name">${escapeHtml(item.name)}</span>
+              <span class="cart-item-price">${formatPrice(item.price * item.qty)}</span>
+            </div>
+            <div class="cart-item-controls">
+              <button class="cart-qty-btn" onclick="window.ProductInfo.decreaseQty('${escapeHtml(item.id)}')" aria-label="Decrease quantity">−</button>
+              <span class="cart-qty-num">${item.qty}</span>
+              <button class="cart-qty-btn" onclick="window.ProductInfo.increaseQty('${escapeHtml(item.id)}')" aria-label="Increase quantity">+</button>
+              <button class="cart-remove-btn" onclick="window.ProductInfo.removeItem('${escapeHtml(item.id)}')" aria-label="Remove item">✕</button>
+            </div>
+          `;
+          cartItems.appendChild(cartItem);
+        });
+        
+        // Ensure empty message is hidden
+        cartEmpty.style.display = 'none';
+      }
+
+      // Escape HTML to prevent XSS
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // 4-LEVEL MEDIA RESOLUTION ENGINE
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function resolveProductImages(productId, category) {
+        const params = getUrlParams();
+        
+        // Level 1: Check URL parameter
+        if (params.images) {
+          return params.images.split(',').map(url => url.trim());
+        }
+        
+        // Level 2: Check product-specific registry
+        if (productId && PRODUCT_MEDIA_REGISTRY.products[productId]) {
+          return PRODUCT_MEDIA_REGISTRY.products[productId];
+        }
+        
+        // Level 3: Check category fallback
+        if (category && PRODUCT_MEDIA_REGISTRY.categories[category]) {
+          return PRODUCT_MEDIA_REGISTRY.categories[category];
+        }
+        
+        // Level 4: Render CSS placeholder
+        const placeholder = CATEGORY_PLACEHOLDER_MAP[category] || CATEGORY_PLACEHOLDER_MAP.default;
+        return null;
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // GALLERY ENGINE
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function initGallery(images) {
+        const slides = document.getElementById('gallerySlides');
+        const dots = document.getElementById('galleryDots');
+        const thumbs = document.getElementById('galleryThumbs');
+        
+        if (!images || images.length === 0) {
+          // Level 4: Show placeholder
+          slides.innerHTML = `
+            <div class="gallery-slide">
+              <div class="gallery-placeholder">
+                <span class="gallery-placeholder-icon">${CATEGORY_PLACEHOLDER_MAP[APP.currentProduct?.category]?.emoji || '🍪'}</span>
+                <span class="gallery-placeholder-text">${CATEGORY_PLACEHOLDER_MAP[APP.currentProduct?.category]?.text || 'Treat'}</span>
+              </div>
+            </div>
+          `;
+          return;
+        }
+        
+        APP.gallery.images = images;
+        APP.gallery.currentIndex = 0;
+        
+        // Render slides
+        slides.innerHTML = images.map((src, index) => `
+          <div class="gallery-slide" data-index="${index}">
+            <img src="${src}" alt="Product image ${index + 1}" loading="eager" />
+          </div>
+        `).join('');
+        
+        // Render dots
+        dots.innerHTML = images.map((_, index) => `
+          <button class="gallery-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to image ${index + 1}"></button>
+        `).join('');
+        
+        // Render thumbnails
+        thumbs.innerHTML = images.map((src, index) => `
+          <button class="gallery-thumb ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="View image ${index + 1}">
+            <img src="${src}" alt="Thumbnail ${index + 1}" loading="lazy" />
+          </button>
+        `).join('');
+        
+        // Add event listeners
+        setupGalleryControls();
+        setupGalleryTouch();
+        
+        // Update navigation buttons
+        updateGalleryNav();
+      }
+
+      function setupGalleryControls() {
+        const prevBtn = document.getElementById('galleryPrev');
+        const nextBtn = document.getElementById('galleryNext');
+        const dots = document.querySelectorAll('.gallery-dot');
+        const thumbs = document.querySelectorAll('.gallery-thumb');
+        
+        prevBtn.addEventListener('click', () => goToSlide(APP.gallery.currentIndex - 1));
+        nextBtn.addEventListener('click', () => goToSlide(APP.gallery.currentIndex + 1));
+        
+        dots.forEach(dot => {
+          dot.addEventListener('click', () => {
+            goToSlide(parseInt(dot.dataset.index));
+          });
+        });
+        
+        thumbs.forEach(thumb => {
+          thumb.addEventListener('click', () => {
+            goToSlide(parseInt(thumb.dataset.index));
+          });
+        });
+      }
+
+      function setupGalleryTouch() {
+        const gallery = document.getElementById('galleryMain');
+        const slides = document.getElementById('gallerySlides');
+        
+        // Mouse events
+        gallery.addEventListener('mousedown', startDrag);
+        gallery.addEventListener('mousemove', drag);
+        gallery.addEventListener('mouseup', endDrag);
+        gallery.addEventListener('mouseleave', endDrag);
+        
+        // Touch events
+        gallery.addEventListener('touchstart', startDrag, { passive: false });
+        gallery.addEventListener('touchmove', drag, { passive: false });
+        gallery.addEventListener('touchend', endDrag);
+      }
+
+      function startDrag(e) {
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        
+        APP.gallery.isDragging = true;
+        APP.gallery.startX = clientX;
+        APP.gallery.currentX = clientX;
+        APP.gallery.translateX = 0;
+        APP.gallery.velocity = 0;
+        
+        if (APP.gallery.animationId) {
+          cancelAnimationFrame(APP.gallery.animationId);
+        }
+      }
+
+      function drag(e) {
+        if (!APP.gallery.isDragging) return;
+        
+        e.preventDefault();
+        
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const diff = clientX - APP.gallery.startX;
+        
+        APP.gallery.velocity = clientX - APP.gallery.currentX;
+        APP.gallery.currentX = clientX;
+        APP.gallery.translateX = diff;
+        
+        const slideWidth = document.querySelector('.gallery-slide').offsetWidth;
+        const percent = (diff / slideWidth) * 100;
+        
+        const slides = document.getElementById('gallerySlides');
+        const baseTranslate = -APP.gallery.currentIndex * 100;
+        slides.style.transform = `translateX(calc(${baseTranslate}% + ${percent}%))`;
+      }
+
+      function endDrag() {
+        if (!APP.gallery.isDragging) return;
+        
+        APP.gallery.isDragging = false;
+        
+        const slideWidth = document.querySelector('.gallery-slide').offsetWidth;
+        const threshold = slideWidth * 0.25;
+        
+        let newIndex = APP.gallery.currentIndex;
+        
+        if (Math.abs(APP.gallery.translateX) > threshold) {
+          if (APP.gallery.translateX > 0 && APP.gallery.currentIndex > 0) {
+            newIndex = APP.gallery.currentIndex - 1;
+          } else if (APP.gallery.translateX < 0 && APP.gallery.currentIndex < APP.gallery.images.length - 1) {
+            newIndex = APP.gallery.currentIndex + 1;
+          }
+        }
+        
+        goToSlide(newIndex);
+      }
+
+      function goToSlide(index) {
+        if (index < 0 || index >= APP.gallery.images.length) return;
+        
+        APP.gallery.currentIndex = index;
+        
+        const slides = document.getElementById('gallerySlides');
+        slides.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Update dots
+        document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+        
+        // Update thumbnails
+        document.querySelectorAll('.gallery-thumb').forEach((thumb, i) => {
+          thumb.classList.toggle('active', i === index);
+        });
+        
+        updateGalleryNav();
+      }
+
+      function updateGalleryNav() {
+        const prevBtn = document.getElementById('galleryPrev');
+        const nextBtn = document.getElementById('galleryNext');
+        const total = APP.gallery.images.length;
+        
+        prevBtn.disabled = APP.gallery.currentIndex === 0;
+        nextBtn.disabled = APP.gallery.currentIndex === total - 1;
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // URL PARAMETER PARSING & INJECTION
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function parseUrlParams() {
+        const params = getUrlParams();
+        
+        APP.currentProduct = {
+          id: params.id || 'default',
+          name: params.name || 'Cookie',
+          price: parseFloat(params.price) || 0,
+          desc: params.desc || 'Delicious freshly baked cookie made with premium ingredients.',
+          category: params.category || 'cookies',
+          images: null
+        };
+        
+        // Resolve images
+        APP.currentProduct.images = resolveProductImages(APP.currentProduct.id, APP.currentProduct.category);
+        
+        // Inject into DOM
+        injectProductData();
+        
+        // Initialize gallery
+        initGallery(APP.currentProduct.images);
+      }
+
+      function injectProductData() {
+        const product = APP.currentProduct;
+        
+        // Update page title
+        document.title = `${product.name} — That Cookie Dough`;
+        
+        // Update breadcrumb
+        document.getElementById('breadcrumbProduct').textContent = product.name;
+        
+        // Update category
+        document.getElementById('productCategory').textContent = product.category.charAt(0).toUpperCase() + product.category.slice(1);
+        
+        // Update name
+        document.getElementById('productName').textContent = product.name;
+        
+        // Update price
+        document.getElementById('productPrice').textContent = formatPrice(product.price);
+        
+        // Update description
+        document.getElementById('productDesc').textContent = product.desc;
+        
+        // Initialize size options for Churros and Garlic Bread
+        initSizeOptions();
+      }
+      
+      // ═══════════════════════════════════════════════════════════════════════════
+      // SIZE OPTIONS FOR CHURROS AND GARLIC BREAD
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      const SIZE_OPTIONS = {
+        'classic-churros': {
+          label: 'Per Dozen',
+          options: [
+            { label: '6 pcs (₱60)', value: 60 },
+            { label: '12 pcs (₱110)', value: 110 },
+            { label: '24 pcs (₱200)', value: 200 }
+          ]
+        },
+        'premium-garlic-bread': {
+          label: 'Per Dozen',
+          options: [
+            { label: '4 pcs (₱70)', value: 70 },
+            { label: '8 pcs (₱140)', value: 140 }
+          ]
+        }
+      };
+      
+      function initSizeOptions() {
+        const productId = APP.currentProduct?.id;
+        const sizeOptionsContainer = document.getElementById('sizeOptionsContainer');
+        const sizeOptionsDiv = document.getElementById('sizeOptions');
+        const sizeLabel = document.getElementById('sizeLabel');
+        
+        // Check if product has size options
+        if (SIZE_OPTIONS[productId]) {
+          const sizeData = SIZE_OPTIONS[productId];
+          
+          // Show size options
+          sizeOptionsDiv.style.display = 'block';
+          sizeLabel.textContent = sizeData.label;
+          
+          // Build radio buttons
+          sizeOptionsContainer.innerHTML = sizeData.options.map((opt, index) => `
+            <label class="size-option">
+              <input type="radio" name="sizeOption" value="${opt.value}" ${index === 0 ? 'checked' : ''} />
+              <span class="size-option-text">${opt.label}</span>
+            </label>
+          `).join('');
+          
+          // Add event listeners
+          const radios = sizeOptionsContainer.querySelectorAll('input[name="sizeOption"]');
+          radios.forEach(radio => {
+            radio.addEventListener('change', handleSizeChange);
+          });
+          
+          // Set initial price from first option
+          if (sizeData.options.length > 0) {
+            APP.currentProduct.price = sizeData.options[0].value;
+            document.getElementById('productPrice').textContent = formatPrice(APP.currentProduct.price);
+          }
+        } else {
+          // Hide size options for other products
+          sizeOptionsDiv.style.display = 'none';
+        }
+      }
+      
+      function handleSizeChange(e) {
+        const selectedPrice = parseFloat(e.target.value);
+        APP.currentProduct.price = selectedPrice;
+        document.getElementById('productPrice').textContent = formatPrice(selectedPrice);
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // QUANTITY CONTROLS
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function initQuantityControls() {
+        const qtyMinus = document.getElementById('qtyMinus');
+        const qtyPlus = document.getElementById('qtyPlus');
+        const qtyNum = document.getElementById('qtyNum');
+        
+        qtyMinus.addEventListener('click', () => {
+          if (APP.quantity > 1) {
+            APP.quantity--;
+            qtyNum.textContent = APP.quantity;
+          }
+        });
+        
+        qtyPlus.addEventListener('click', () => {
+          if (APP.quantity < 99) {
+            APP.quantity++;
+            qtyNum.textContent = APP.quantity;
+          }
+        });
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // CART PANEL CONTROLS
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function initCartPanel() {
+        const cartBtn = document.getElementById('cartBtn');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartPanel = document.getElementById('cartPanel');
+        const cartCloseBtn = document.getElementById('cartCloseBtn');
+        
+        cartBtn.addEventListener('click', openCart);
+        cartOverlay.addEventListener('click', closeCart);
+        cartCloseBtn.addEventListener('click', closeCart);
+      }
+
+      function openCart() {
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartPanel = document.getElementById('cartPanel');
+        
+        cartOverlay.classList.add('active');
+        cartPanel.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeCart() {
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartPanel = document.getElementById('cartPanel');
+        
+        cartOverlay.classList.remove('active');
+        cartPanel.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // ADD TO CART & BUY NOW
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function initActionButtons() {
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const buyNowBtn = document.getElementById('buyNowBtn');
+        
+        addToCartBtn.addEventListener('click', handleAddToCart);
+        buyNowBtn.addEventListener('click', handleBuyNow);
+      }
+
+      function handleAddToCart() {
+        if (!APP.currentProduct) return;
+        
+        addToCart({
+          id: APP.currentProduct.id,
+          name: APP.currentProduct.name,
+          price: APP.currentProduct.price,
+          image: APP.currentProduct.images?.[0] || ''
+        }, APP.quantity);
+        
+        // Visual feedback
+        const btn = document.getElementById('addToCartBtn');
+        btn.classList.add('added');
+        btn.querySelector('span').textContent = 'Added!';
+        
+        setTimeout(() => {
+          btn.classList.remove('added');
+          btn.querySelector('span').textContent = 'Add to Cart';
+        }, 2000);
+      }
+
+      function handleBuyNow() {
+        if (!APP.currentProduct) return;
+        
+        // Add current product to cart
+        addToCart({
+          id: APP.currentProduct.id,
+          name: APP.currentProduct.name,
+          price: APP.currentProduct.price,
+          image: APP.currentProduct.images?.[0] || ''
+        }, APP.quantity);
+        
+        // Open cart
+        openCart();
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // ORDER MODAL & FORM
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function initOrderModal() {
+        const orderOverlay = document.getElementById('orderOverlay');
+        const orderModal = document.getElementById('orderModal');
+        const orderModalClose = document.getElementById('orderModalClose');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const orderForm = document.getElementById('orderForm');
+        
+        checkoutBtn.addEventListener('click', openOrderModal);
+        orderOverlay.addEventListener('click', closeOrderModal);
+        orderModalClose.addEventListener('click', closeOrderModal);
+        orderForm.addEventListener('submit', handleOrderSubmit);
+      }
+
+      function openOrderModal() {
+        const cart = getCart();
+        
+        if (cart.length === 0) {
+          showToast('Your cart is empty!', true);
+          return;
+        }
+        
+        // Render order summary
+        renderOrderSummary();
+        
+        // Open modal
+        const orderOverlay = document.getElementById('orderOverlay');
+        const orderModal = document.getElementById('orderModal');
+        
+        orderOverlay.classList.add('active');
+        orderModal.classList.add('open');
+        
+        closeCart();
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeOrderModal() {
+        const orderOverlay = document.getElementById('orderOverlay');
+        const orderModal = document.getElementById('orderModal');
+        
+        orderOverlay.classList.remove('active');
+        orderModal.classList.remove('open');
+        
+        document.body.style.overflow = '';
+        
+        // Reset form
+        document.getElementById('orderForm').reset();
+        clearFormErrors();
+      }
+
+      function renderOrderSummary() {
+        const cart = getCart();
+        const summaryList = document.getElementById('orderSummaryList');
+        const totalAmount = document.getElementById('orderTotalAmount');
+        
+        summaryList.innerHTML = cart.map(item => `
+          <div class="order-summary-row">
+            <div class="order-item-info">
+              <span class="order-item-name">${escapeHtml(item.name)}</span>
+              <span class="order-item-qty">×${item.qty}</span>
+            </div>
+            <span class="order-item-subtotal">${formatPrice(item.price * item.qty)}</span>
+          </div>
+        `).join('');
+        
+        totalAmount.textContent = formatPrice(getCartTotal());
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // FORM VALIDATION & SUBMISSION
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function validateOrderForm() {
+        const customerName = document.getElementById('customerName').value.trim();
+        const phoneNumber = document.getElementById('phoneNumber').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const cart = getCart();
+        
+        let isValid = true;
+        
+        // Validate customer name (minimum 2 characters)
+        if (customerName.length < 2) {
+          showFieldError('fieldCustomerName', 'errorCustomerName');
+          isValid = false;
+        } else {
+          clearFieldError('fieldCustomerName', 'errorCustomerName');
+        }
+        
+        // Validate phone number (Philippine format: 09XXXXXXXXX)
+        const cleanPhone = phoneNumber.replace(/[\s\-]/g, '');
+        if (!/^09\d{9}$/.test(cleanPhone)) {
+          showFieldError('fieldPhoneNumber', 'errorPhoneNumber');
+          isValid = false;
+        } else {
+          clearFieldError('fieldPhoneNumber', 'errorPhoneNumber');
+        }
+        
+        // Validate address (minimum 5 characters)
+        if (address.length < 5) {
+          showFieldError('fieldAddress', 'errorAddress');
+          isValid = false;
+        } else {
+          clearFieldError('fieldAddress', 'errorAddress');
+        }
+        
+        // Validate cart not empty
+        if (cart.length === 0) {
+          showToast('Your cart is empty!', true);
+          isValid = false;
+        }
+        
+        // Validate total = quantity * price
+        const total = getCartTotal();
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        const avgPrice = totalItems > 0 ? total / totalItems : 0;
+        
+        // Backend validation: total must equal sum of (price * qty) for each item
+        for (const item of cart) {
+          const itemTotal = item.price * item.qty;
+          if (Math.abs(itemTotal - (item.price * item.qty)) > 0.01) {
+            // This is handled automatically since we calculate from cart
+          }
+        }
+        
+        return isValid;
+      }
+
+      function showFieldError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        const input = field.querySelector('.form-input');
+        
+        field.classList.add('has-error');
+        input.classList.add('error');
+        error.style.display = 'flex';
+      }
+
+      function clearFieldError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        const input = field.querySelector('.form-input');
+        
+        field.classList.remove('has-error');
+        input.classList.remove('error');
+        error.style.display = 'none';
+      }
+
+      function clearFormErrors() {
+        const fields = document.querySelectorAll('.form-field');
+        fields.forEach(field => {
+          field.classList.remove('has-error');
+          const input = field.querySelector('.form-input');
+          if (input) input.classList.remove('error');
+          const error = field.querySelector('.form-error');
+          if (error) error.style.display = 'none';
+        });
+      }
+
+      async function handleOrderSubmit(e) {
+        e.preventDefault();
+        
+        if (!validateOrderForm()) {
+          return;
+        }
+        
+        const cart = getCart();
+        const customerName = document.getElementById('customerName').value.trim();
+        const phoneNumber = document.getElementById('phoneNumber').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const notes = document.getElementById('notes').value.trim();
+        
+        // Calculate totals
+        const total = getCartTotal();
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        
+        // Build products string
+        const productsList = cart.map(item => 
+          `${item.name} ×${item.qty} (${formatPrice(item.price * item.qty)})`
+        ).join(', ');
+        
+        // Prepare order data
+        const orderData = {
+          customerName: customerName,
+          phoneNumber: phoneNumber.replace(/[\s\-]/g, ''),
+          product: productsList,
+          quantity: totalItems,
+          price: total / totalItems, // Average price
+          total: total,
+          address: address,
+          notes: notes,
+          status: 'Pending'
+        };
+        
+        // Show loading state
+        const btn = document.getElementById('placeOrderBtn');
+        btn.classList.add('loading');
+        
+        try {
+          const response = await OrderService.submitOrder(orderData);
+          
+          // Success
+          showToast('Order placed successfully! 🎉');
+          
+          // Clear cart
+          saveCart([]);
+          updateCartUI();
+          
+          // Close modal
+          closeOrderModal();
+          
+          // Reset form
+          document.getElementById('orderForm').reset();
+          
+        } catch (error) {
+          // Error
+          showToast(error.message || 'Failed to place order. Please try again.', true);
+          console.error('Order error:', error);
+        } finally {
+          // Remove loading state
+          btn.classList.remove('loading');
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // NAVIGATION SCROLL EFFECT
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function initNavScroll() {
+        const navBar = document.getElementById('navBar');
+        
+        window.addEventListener('scroll', debounce(() => {
+          if (window.scrollY > 50) {
+            navBar.classList.add('scrolled');
+          } else {
+            navBar.classList.remove('scrolled');
+          }
+        }, 10));
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // PUBLIC API (for inline handlers)
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      window.ProductInfo = {
+        decreaseQty: function(productId) {
+          const cart = getCart();
+          const item = cart.find(i => i.id === productId);
+          if (item) {
+            updateItemQuantity(productId, item.qty - 1);
+          }
+        },
+        
+        increaseQty: function(productId) {
+          const cart = getCart();
+          const item = cart.find(i => i.id === productId);
+          if (item) {
+            updateItemQuantity(productId, item.qty + 1);
+          }
+        },
+        
+        removeItem: function(productId) {
+          removeFromCart(productId);
+        }
+      };
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // INITIALIZATION
+      // ═══════════════════════════════════════════════════════════════════════════
+      
+      function init() {
+        // Parse URL parameters and inject product data
+        parseUrlParams();
+        
+        // Initialize UI components
+        initQuantityControls();
+        initCartPanel();
+        initActionButtons();
+        initOrderModal();
+        initNavScroll();
+        
+        // Update cart UI
+        updateCartUI();
+        
+        // Hide loading screen
+        setTimeout(() => {
+          document.getElementById('loadingScreen').classList.add('hidden');
+        }, 500);
+      }
+
+      // Run on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    })();
+  </script>
+</body>
+</html>

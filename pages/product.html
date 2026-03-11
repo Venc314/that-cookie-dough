@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Menu — That Cookie Dough</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles/product.css">
+  
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav-bar" id="main-nav" aria-label="Main navigation">
+    <a href="homepage.html" class="logo">TCD<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="homepage.html" class="nav-link">Home</a>
+      <a href="product.html" class="nav-link">Menu</a>
+      <a href="#" class="nav-link">About</a>
+    </div>
+    <div class="nav-right">
+      <button class="cart-icon-btn" id="cart-toggle" aria-label="Open cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-elements" id="parallax-bg">
+      <div class="floating-orb orb-1"></div>
+      <div class="floating-orb orb-2"></div>
+      <img src="../public/images/pictures/kon de leche.png" class="hero-float-img float-1" alt="" aria-hidden="true" onerror="this.src='https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=200&auto=format&fit=crop'" />
+      <img src="../public/images/pictures/10.png" class="hero-float-img float-2" alt="" aria-hidden="true" onerror="this.src='https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=200&auto=format&fit=crop'" />
+      <img src="../public/images/pictures/9.png" class="hero-float-img float-3" alt="" aria-hidden="true" onerror="this.style.display='none'" />
+    </div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Freshly Baked & Handcrafted</p>
+        <h1 class="hero-title">Experience<br/>The Extraordinary</h1>
+        <p class="hero-subtitle">Discover our god-tier cookies, crispy churros, and savory garlic bread. Made with premium ingredients and baked to perfection.</p>
+        <a href="#products-grid" class="hero-cta" id="hero-cta">Explore Menu</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- FILTER SECTION -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="cookies">Cookies</button>
+        <button class="filter-btn" data-filter="specialty">Specialty</button>
+        <button class="filter-btn" data-filter="churros">Churros</button>
+        <button class="filter-btn" data-filter="garlic-bread">Garlic Bread</button>
+        <button class="filter-btn" data-filter="new">New</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <section class="products-section">
+    <div class="container">
+      <div class="products-grid" id="products-grid">
+        <!-- Products will be injected via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-strip-track">
+      <div class="marquee-strip-content">
+        <span>Freshly Baked</span><span class="ms-dot">·</span>
+        <span>Premium Ingredients</span><span class="ms-dot">·</span>
+        <span>Handmade Dessert</span><span class="ms-dot">·</span>
+        <span>Best Sellers</span><span class="ms-dot">·</span>
+        <span>Iligan City</span><span class="ms-dot">·</span>
+        <span>Est. 2023</span><span class="ms-dot">·</span>
+        <span>Freshly Baked</span><span class="ms-dot">·</span>
+        <span>Premium Ingredients</span><span class="ms-dot">·</span>
+        <span>Handmade Dessert</span><span class="ms-dot">·</span>
+        <span>Best Sellers</span><span class="ms-dot">·</span>
+        <span>Iligan City</span><span class="ms-dot">·</span>
+        <span>Est. 2023</span><span class="ms-dot">·</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-enjoy">ENJOY</div>
+          <div class="footer-enjoy">EATING</div>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/thatcookiedough.ph/" class="social-btn" aria-label="Instagram" target = "_blank">IG</a>
+          <a href="https://web.facebook.com/ThatCookieDoughIligan" class="social-btn" aria-label="Facebook" target = "_blank">FB</a>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a class="footer-link" href="homepage.html">Home</a>
+        <a class="footer-link" href="product.html">Our Products</a>
+        <a class="footer-link" href="#">About Us</a>
+        <a class="footer-link" href="#">Privacy Policy</a>
+      </nav>
+      <div class="footer-bottom">
+        <p>© 2023 That Cookie Dough. All rights reserved.</p>
+        <p>Made with ❤ in Iligan City</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART PANEL -->
+  <div class="cart-overlay" id="cart-overlay" aria-hidden="true"></div>
+
+  <aside class="cart-panel" id="cart-panel" aria-label="Shopping cart">
+    <div class="cart-panel-header">
+      <h2 class="cart-panel-title">Your Cart</h2>
+      <button class="cart-close-btn" id="cart-close" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <div class="cart-empty" id="cart-empty">
+        <span class="cart-empty-icon">🛒</span>
+        <p>Your cart is empty.</p>
+        <p class="cart-empty-sub">Add some treats to get started!</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span class="cart-total-amount" id="cart-total">₱0</span>
+      </div>
+      <button class="btn-checkout" id="btn-checkout">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <div class="add-feedback-wrap" id="add-feedback-wrap" aria-live="polite"></div>
+
+  <!-- SCRIPTS -->
+  <script>
+    (function() {
+      'use strict';
+
+      // Product Data - matches PRODUCT_MEDIA_REGISTRY from productinfo.html
+      const products = [
+        {
+          id: 'classic',
+          name: 'Classic Chocolate Chip',
+          price: 120,
+          category: 'cookies',
+          desc: 'Our signature cookie with premium Belgian chocolate chips in a buttery, soft-baked base.',
+          images: '../public/assets/pictures/Classic cookies.png',
+          badge: 'Best Seller'
+        },
+        {
+          id: 'crinkles',
+          name: 'Ultimate Crinkles',
+          price: 120,
+          category: 'cookies',
+          desc: 'Fudgy chocolate cookies rolled in powdered sugar, creating that perfect crackled appearance.',
+          images: '../public/assets/pictures/crinkles.png',
+          badge: null
+        },
+        {
+          id: 'double',
+          name: 'Double Dose',
+          price: 120,
+          category: 'specialty',
+          desc: 'Double the chocolate! Loaded with cocoa powder AND chocolate chips for the ultimate chocolate experience.',
+          images: '../public/assets/pictures/double.png',
+          badge: 'Popular'
+        },
+        {
+          id: 'kon-de-leche',
+          name: 'Kon de Leche',
+          price: 120,
+          category: 'specialty',
+          desc: 'Sweet condensed milk cookie with a caramelized exterior and soft, chewy interior.',
+          images: '../public/assets/pictures/kon de leche.png',
+          badge: 'Local Favorite'
+        },
+        {
+          id: 'matcha-white',
+          name: 'Matcha White',
+          price: 120,
+          category: 'new',
+          desc: 'Premium Japanese matcha green tea cookie with white chocolate chips for a delicate, earthy sweetness.',
+          images: '../public/assets/pictures/matcha white.png',
+          badge: 'New!'
+        },
+        {
+          id: 'molten-classic',
+          name: 'Molten Classic',
+          price: 220,
+          category: 'specialty',
+          desc: 'Gooey chocolate cookie with a molten center that flows like lava when you bite in.',
+          images: '../public/assets/pictures/molten clasic.png',
+          badge: null
+        },
+        {
+          id: 'denis-smores',
+          name: 'Denis Smores',
+          price: 220,
+          category: 'specialty',
+          desc: 'Graham cracker cookie loaded with marshmallows and chocolate chunks — campfire vibes in every bite.',
+          images: '../public/assets/pictures/denis smores.png',
+          badge: null
+        },
+        {
+          id: 'matchadoodles',
+          name: 'Matchadoodles',
+          price: 120,
+          category: 'cookies',
+          desc: 'Cinnamon-spiced oatmeal cookie with a hint of matcha for a unique twist on the classic.',
+          images: '../public/assets/cookei/matchadoodles.png',
+          badge: null
+        },
+        {
+          id: 'snickadoodles',
+          name: 'Snickadoodles',
+          price: 120,
+          category: 'cookies',
+          desc: 'Classic snickerdoodle cookie rolled in cinnamon sugar — soft, chewy, and absolutely irresistible.',
+          images: '../public/assets/cookei/snickadoodles.png',
+          badge: null
+        },
+        {
+          id: 'classic-churros',
+          name: 'Classic Churros',
+          category: 'churros',
+          desc: 'Crispy fried dough dusted with cinnamon sugar, served with a rich chocolate dipping sauce.',
+          images: '../public/assets/CHURROS 1.jpeg',
+          badge: 'New!',
+          prices: {
+            '6 pcs': 60,
+            '12 pcs': 110,
+            '24 pcs': 200
+          }
+        },
+        {
+          id: 'premium-garlic-bread',
+          name: 'Premium Garlic Bread',
+          category: 'garlic-bread',
+          desc: 'Artisan bread sliced and baked with our signature garlic butter and herbs until golden crisp.',
+          images: '../public/assets/BREAD 1.jpeg',
+          badge: 'Savory',
+          prices: {
+            '4 pcs': 70,
+            '8 pcs': 140
+          }
+        }
+      ];
+
+      // DOM Elements
+      const productsGrid = document.getElementById('products-grid');
+      const cartToggle = document.getElementById('cart-toggle');
+      const cartPanel = document.getElementById('cart-panel');
+      const cartOverlay = document.getElementById('cart-overlay');
+      const cartClose = document.getElementById('cart-close');
+      const cartItems = document.getElementById('cart-items');
+      const cartEmpty = document.getElementById('cart-empty');
+      const cartFooter = document.getElementById('cart-footer');
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+      const cartFeedbackWrap = document.getElementById('add-feedback-wrap');
+
+      // Cart State
+      let cart = JSON.parse(localStorage.getItem('tcd-cart') || '[]');
+
+      // Nav scroll effect
+      const nav = document.getElementById('main-nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 30);
+      }, { passive: true });
+
+      // Render Products
+      function renderProducts(filter = 'all') {
+        const filtered = filter === 'all' 
+          ? products 
+          : products.filter(p => p.category === filter);
+
+        productsGrid.innerHTML = filtered.map((product, index) => {
+          // Check if product has multiple price options
+          const hasMultiplePrices = product.prices && typeof product.prices === 'object';
+          const priceKeys = hasMultiplePrices ? Object.keys(product.prices) : [];
+          const defaultPrice = hasMultiplePrices ? product.prices[priceKeys[0]] : product.price;
+          // Display "per dozen" for products with single price (cookies)
+          const perDozenText = hasMultiplePrices ? '' : ' per dozen';
+          const displayPrice = `₱${defaultPrice}${perDozenText}`;
+          
+          // Generate size options HTML for products with multiple prices
+          const sizeOptionsHTML = hasMultiplePrices ? `
+            <div class="size-options" data-product-id="${product.id}">
+              ${priceKeys.map((key, idx) => `
+                <label class="size-option">
+                  <input type="radio" name="size-${product.id}" value="${product.prices[key]}" ${idx === 0 ? 'checked' : ''} />
+                  <span class="size-label">${key}</span>
+                  <span class="size-price">₱${product.prices[key]}</span>
+                </label>
+              `).join('')}
+            </div>
+          ` : '';
+
+          return `
+            <article class="product-card" data-id="${product.id}" style="animation-delay: ${index * 0.05}s">
+              <div class="product-card-inner">
+                <div class="card-image-wrap">
+                  <img class="card-image" src="${product.images}" alt="${product.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=500&auto=format&fit=crop'" />
+                  ${product.badge ? `<span class="card-badge">${product.badge}</span>` : ''}
+                  <button class="card-quick-add" aria-label="Quick add ${product.name}" data-id="${product.id}" data-price="${defaultPrice}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div class="card-content">
+                  <p class="card-category">${product.category}</p>
+                  <h3 class="card-title">${product.name}</h3>
+                  <p class="card-desc">${product.desc}</p>
+                  ${sizeOptionsHTML}
+                  <div class="card-footer">
+                    <span class="card-price" id="price-${product.id}">${displayPrice}</span>
+                    <a href="productinfo.html?id=${product.id}&name=${encodeURIComponent(product.name)}&price=${defaultPrice}&desc=${encodeURIComponent(product.desc)}&category=${product.category}" class="card-btn">View</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        // Apply 3D Hover effect on newly rendered cards
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach(card => {
+          const inner = card.querySelector('.product-card-inner');
+          
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate tilt angle based on mouse position
+            const rotateX = ((y - centerY) / centerY) * -8; // Max 8 degrees tilt
+            const rotateY = ((x - centerX) / centerX) * 8;
+            
+            // Pop the specific elements inside
+            inner.style.transform = `scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            inner.style.boxShadow = `
+              ${(centerX - x) * 0.15}px ${(centerY - y) * 0.15}px 30px rgba(47,33,25,0.15),
+              0 20px 40px rgba(47,33,25,0.1)
+            `;
+          });
+          
+          card.addEventListener('mouseleave', () => {
+             inner.style.transform = 'scale(1) rotateX(0) rotateY(0)';
+             inner.style.boxShadow = 'var(--shadow-card)';
+          });
+        });
+
+        // Add click handlers to cards
+        document.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('click', (e) => {
+            if (!e.target.closest('.card-quick-add')) {
+              const id = card.dataset.id;
+              const product = products.find(p => p.id === id);
+              if (product) {
+                // Get the correct price for products with multiple prices
+                const price = product.prices ? Object.values(product.prices)[0] : product.price;
+                window.location.href = `productinfo.html?id=${product.id}&name=${encodeURIComponent(product.name)}&price=${price}&desc=${encodeURIComponent(product.desc)}&category=${product.category}`;
+              }
+            }
+          });
+        });
+
+        // Quick add handlers
+        document.querySelectorAll('.card-quick-add').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            const product = products.find(p => p.id === id);
+            if (product) {
+              // Get the selected price - check if there's a selected radio button
+              let price = product.price || product.prices ? Object.values(product.prices)[0] : 0;
+              
+              // If product has multiple prices, get the selected one
+              if (product.prices) {
+                const selectedRadio = document.querySelector(`input[name="size-${id}"]:checked`);
+                if (selectedRadio) {
+                  price = parseInt(selectedRadio.value);
+                }
+              }
+              
+              addToCart(product.id, product.name, price, 1);
+            }
+          });
+        });
+
+        // Size option handlers - update price display and button data
+        document.querySelectorAll('.size-options').forEach(optionsDiv => {
+          const productId = optionsDiv.dataset.productId;
+          const priceDisplay = document.getElementById(`price-${productId}`);
+          const quickAddBtn = document.querySelector(`.card-quick-add[data-id="${productId}"]`);
+          
+          optionsDiv.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+              const selectedPrice = e.target.value;
+              // For multi-price products (churros, garlic bread), don't add "per dozen"
+              const perDozenText = '';
+              if (priceDisplay) {
+                priceDisplay.textContent = `₱${selectedPrice}${perDozenText}`;
+              }
+              if (quickAddBtn) {
+                quickAddBtn.dataset.price = selectedPrice;
+              }
+            });
+          });
+        });
+      }
+
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderProducts(btn.dataset.filter);
+        });
+      });
+
+      // Cart Functions
+      function saveCart() {
+        localStorage.setItem('tcd-cart', JSON.stringify(cart));
+      }
+
+      function openCart() {
+        cartPanel.classList.add('open');
+        cartOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeCart() {
+        cartPanel.classList.remove('open');
+        cartOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      cartToggle.addEventListener('click', openCart);
+      cartClose.addEventListener('click', closeCart);
+      cartOverlay.addEventListener('click', closeCart);
+
+      function renderCart() {
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        const count = cart.reduce((s, i) => s + i.qty, 0);
+
+        cartCount.textContent = count;
+        cartCount.classList.toggle('has-items', count > 0);
+        cartTotal.textContent = '₱' + total.toLocaleString();
+        
+        // Remove existing items
+        document.querySelectorAll('.cart-item').forEach(el => el.remove());
+
+        if (cart.length === 0) {
+          cartEmpty.style.display = 'flex';
+          cartFooter.style.display = 'none';
+          saveCart();
+          return;
+        }
+
+        cartEmpty.style.display = 'none';
+        cartFooter.style.display = 'block';
+
+        cart.forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'cart-item';
+          el.innerHTML = `
+            <div class="cart-item-info">
+              <span class="cart-item-name">${item.name}</span>
+              <span class="cart-item-price">₱${(item.price * item.qty).toLocaleString()}</span>
+            </div>
+            <div class="cart-item-controls">
+              <button class="cart-qty-btn" aria-label="Decrease">−</button>
+              <span class="cart-qty-num">${item.qty}</span>
+              <button class="cart-qty-btn" aria-label="Increase">+</button>
+              <button class="cart-remove-btn" aria-label="Remove">✕</button>
+            </div>`;
+          
+          el.querySelectorAll('.cart-qty-btn')[0].addEventListener('click', () => {
+            item.qty--;
+            if (item.qty <= 0) cart = cart.filter(c => c.id !== item.id);
+            renderCart();
+          });
+          el.querySelectorAll('.cart-qty-btn')[1].addEventListener('click', () => {
+            item.qty++;
+            renderCart();
+          });
+          el.querySelector('.cart-remove-btn').addEventListener('click', () => {
+            cart = cart.filter(c => c.id !== item.id);
+            renderCart();
+          });
+          cartItems.appendChild(el);
+        });
+        saveCart();
+      }
+
+      function addToCart(id, name, price, quantity) {
+        const existing = cart.find(i => i.id === id);
+        if (existing) existing.qty += quantity;
+        else cart.push({ id, name, price: Number(price), qty: quantity });
+        renderCart();
+        showAddFeedback(name);
+      }
+
+      function showAddFeedback(name) {
+        const el = document.createElement('div');
+        el.className = 'add-feedback';
+        el.textContent = `"${name}" added to cart!`;
+        cartFeedbackWrap.appendChild(el);
+        requestAnimationFrame(() => el.classList.add('show'));
+        setTimeout(() => {
+          el.classList.remove('show');
+          el.addEventListener('transitionend', () => el.remove(), { once: true });
+        }, 2200);
+      }
+
+      // Checkout button
+      document.getElementById('btn-checkout').addEventListener('click', () => {
+        if (cart.length === 0) {
+          alert('Your cart is empty. Add some treats first!');
+          return;
+        }
+        // Build URL with cart items
+        const cartParam = cart.map(item => `${item.id}:${item.qty}`).join(',');
+        window.location.href = `productinfo.html?cart=${encodeURIComponent(cartParam)}&fromCart=true`;
+      });
+
+      // Initial render
+      renderProducts();
+      renderCart();
+
+      // -- GOD-TIER 3D & PARALLAX LOGIC --
+      const hero3DCard = document.getElementById('hero-3d-card');
+      const hero3DImg = document.getElementById('hero-3d-img');
+      const parallaxBg = document.getElementById('parallax-bg');
+      const floatImgs = document.querySelectorAll('.hero-float-img');
+      
+      if (hero3DCard && parallaxBg) {
+        document.addEventListener('mousemove', (e) => {
+          const x = e.clientX / window.innerWidth;
+          const y = e.clientY / window.innerHeight;
+
+          // Hero Card 3D Tilt
+          const cardRect = hero3DCard.getBoundingClientRect();
+          const cardCenterX = cardRect.left + cardRect.width / 2;
+          const cardCenterY = cardRect.top + cardRect.height / 2;
+          const rotateY = ((e.clientX - cardCenterX) / cardRect.width) * 20; // Max 20deg
+          const rotateX = ((e.clientY - cardCenterY) / cardRect.height) * -20; // Max -20deg
+
+          // Apply rotation with a subtle shine effect
+          hero3DCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          hero3DImg.style.transform = `translateZ(100px) rotate(${x * -8}deg) scale(1.1)`;
+
+          // Parallax background items
+          floatImgs[0].style.transform = `translate(${x * 60}px, ${y * 40}px) rotate(15deg)`;
+          floatImgs[1].style.transform = `translate(${x * -70}px, ${y * -50}px) rotate(-25deg)`;
+          floatImgs[2].style.transform = `translate(${x * 40}px, ${y * -80}px) rotate(45deg)`;
+        });
+        
+        // Reset nicely when off screen tracking isn't possible, nicely centers
+        document.addEventListener('mouseleave', () => {
+          hero3DCard.style.transform = `rotateX(0deg) rotateY(0deg)`;
+          hero3DImg.style.transform = `translateZ(80px) rotate(-15deg) scale(1)`;
+          floatImgs[0].style.transform = `translate(0px, 0px) rotate(15deg)`;
+          floatImgs[1].style.transform = `translate(0px, 0px) rotate(-25deg)`;
+          floatImgs[2].style.transform = `translate(0px, 0px) rotate(45deg)`;
+        });
+      }
+
+      // Smooth scroll for CTA
+      const heroCta = document.getElementById('hero-cta');
+      if (heroCta) {
+        heroCta.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.getElementById('products-grid');
+          const offset = 100; // Account for fixed nav
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      }
+
+    })();
+  </script>
+</body>
+</html>

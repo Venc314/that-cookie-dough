@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>That Cookie Dough — Est. 2023</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@400;600;700&family=Playfair+Display:ital,wght@0,900;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/styling2.css" />
+  <link rel="stylesheet" href="../styles/marquee2.css" />
+
+  <!-- Tailwind (utility layer only) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#E31E24",
+            "background-light": "#FFFFFF",
+            "background-dark": "#0B0B0B",
+          },
+          fontFamily: { display: ["Montserrat", "sans-serif"] },
+          borderRadius: { DEFAULT: "12px" },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════  NAV  ═══════════════════ -->
+  <nav class="nav-bar" id="main-nav" aria-label="Main navigation">
+    <a href="#" class="logo">TCD<span style="color:var(--red)">.</span></a>
+    <a href="/pages/product.html" class="btn-order">Order Now</a>
+
+  </nav>
+
+  <!-- ═══════════════════  HERO  ═══════════════════ -->
+  <section id="hero" aria-label="Hero">
+
+    <!-- Text column -->
+    <div class="hero-text">
+      <p class="hero-eyebrow">Est. 2023 &nbsp;·&nbsp; Butuan City</p>
+      <h1 class="hero-title">
+        THAT <span class="outline">COOKIE</span><br>DOUGH
+      </h1>
+      <p class="hero-desc">
+        Indulge in the finest cookies in Butuan City. Crafted with passion,
+        baked to perfection, and designed to delight your senses.
+      </p>
+      <div class="hero-cta-row">
+        <a href="/pages/product.html"    class="btn-primary">Order Now</a>
+        <a href="#products" class="btn-ghost">See Menu</a>
+      </div>
+    </div>
+
+      <!-- 3D Floating Slideshow -->
+      <div class="slideshow-scene" id="slideshowScene" aria-live="polite">
+        <div class="slide" data-index="0">
+          <img src="/../public/assets/pictures/10.png" alt="Cookie Dough Product 1" draggable="false" />
+        </div>
+        <div class="slide" data-index="1">
+          <img src="/../public/assets/pictures/13.png" alt="Cookie Dough Product 2" draggable="false" />
+        </div>
+        <div class="slide" data-index="2">
+          <img src="/../public/assets/pictures/9.png" alt="Cookie Dough Product 3" draggable="false" />
+        </div>
+        <div class="slide" data-index="3">
+          <img src="/../public/assets/pictures/10.png"  alt="Cookie Dough Product 4" draggable="false" />
+        </div>
+      </div>
+
+    <!-- Dot indicators -->
+    <div class="slide-dots" id="slideDots" role="tablist" aria-label="Slideshow navigation"></div>
+
+  </section>
+
+  <!-- ═══════════════════  MARQUEE  ═══════════════════ -->
+  <div class="marquee-wrapper" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-content">
+        <span>Freshly Baked</span>
+        <span>Cookies</span>
+        <span>Freshly Baked</span>
+        <span>Cookies</span>
+        <span>Freshly Baked</span>
+        <span>Cookies</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════  STORY  ═══════════════════ -->
+  <section id="story">
+    <div class="container">
+      <div class="story-grid">
+
+        <div class="reveal">
+          <div class="story-img-wrap">
+            <img src="/../public/assets/pictures/logo.png" alt="That Cookie Dough brand logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="story-img-placeholder" style="display:none;">
+              <img src="/../public/assets/pictures/logo.png" alt="That Cookie Dough brand logo" />
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="transition-delay: 180ms;">
+          <p class="story-eyebrow">Our Story</p>
+          <h2 class="story-title">Since 2023...</h2>
+          <p class="story-body">
+            That Cookie Dough was born in 2023, right here in the heart of Butuan City.
+            Passionate about baking and looking for something that would truly delight people,
+            after much persistence and <strong>countless attempts</strong>, the recipe for the
+            most delicious cookies in Iligan emerged.
+          </p>
+          <p class="story-body-sub">
+            Every cookie is crafted with love, baked fresh, and made to create moments you'll
+            always remember.
+          </p>
+          <a href="#" class="btn-outline-white">Learn More</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  LOCATIONS  ═══════════════════ -->
+  <section id="locations">
+    <div class="container">
+
+      <div class="reveal" style="text-align:center; margin-bottom: 3rem;">
+        <h2 class="locations-title">LOCATIONS &amp;<br><span>FIND US</span></h2>
+      </div>
+
+      <div class="locations-grid">
+
+        <div class="reveal">
+          <h3 class="locations-subtitle">Serving Iligan &amp; Beyond</h3>
+          <p class="locations-body">
+            That Cookie Dough started in Iligan City and is growing fast.
+            Look out for new locations as we expand across Mindanao.
+          </p>
+          <div class="location-tags">
+            <span class="location-tag active">ILIGAN CITY</span>
+            <span class="location-tag inactive">CAGAYAN DE ORO</span>
+            <span class="location-tag active">LANAO DEL NORTE</span>
+            <span class="location-tag inactive">BUKIDNON</span>
+          </div>
+
+          <div class="store-address">
+            <p>📍 That Cookie Dough</p>
+            <p>New Frontier, Santiago, Iligan City, Lanao del Norte</p>
+          </div>
+
+          <a href="https://www.google.com/maps/search/New+Frontier,+Santiago,+Iligan+City,+Lanao+del+Norte"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-dark">Find a Store</a>
+        </div>
+
+        <div class="reveal" style="transition-delay: 150ms;">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps?q=New+Frontier,+Santiago,+Iligan+City,+Lanao+del+Norte,+Philippines&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="That Cookie Dough location map">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  OUR PRODUCTS (dark lineup)  ═══════════════════ -->
+      <section class="lineup-section" id="lineup" style="background:#0e0b08; color:#f5ede0;">
+
+        <div class="lineup-header">
+          <h2 class="lineup-title">
+            Our <span class="accent">Products</span>
+          </h2>
+          <p class="lineup-subtitle">
+            Limited batches. When they're gone, they're gone. Don't say we didn't warn you.
+          </p>
+        </div>
+
+        <div class="lineup-rule"></div>
+
+        <div class="lineup-grid">
+
+          <a href="product.html" class="card-link">
+          <article class="card">
+            <div class="card-img-wrap">
+              <span class="card-num"></span>
+              <img src="/../public/images/pictures/Classic cookies.png" alt="Classic Chocolate Chip Cookie" loading="lazy" />
+              <span class="card-price">₱120 per dozen</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name"><span>Classic Chocolate Chip</span></h3>
+              <p class="card-desc">A timeless classic, crispy on the outside, soft and gooey on the inside.</p>
+            </div>
+          </article>
+        </a>
+
+          <a href="product.html" class="card-link">
+          <article class="card">
+            <div class="card-img-wrap">
+              <span class="card-num"></span>
+              <img src="/../public/images/pictures/crinkles.png" alt="Double Chocolate Brownie Cookie" loading="lazy" />
+              <span class="card-price">₱120 per dozen</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name"><span>Ultimate Crinkles</span></h3>
+              <p class="card-desc">Rich, dense chocolate cookie packed with chunks of dark chocolate.</p>
+            </div>
+          </article>
+        </a>
+
+          <a href="product.html" class="card-link">
+          <article class="card">
+            <div class="card-img-wrap">
+              <span class="card-num"></span>
+              <img src="/../public/images/pictures/double.png" alt="Peanut Butter Crunch Cookie" loading="lazy" />
+              <span class="card-price">₱120 per dozen</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name"><span>Double Dose</span></h3>
+              <p class="card-desc">Peanut butter cookie base with roasted peanut bits and chocolate chunks.</p>
+            </div>
+          </article>
+        </a>
+
+          <a href="product.html" class="card-link">
+          <article class="card">
+            <div class="card-img-wrap">
+              <span class="card-num"></span>
+              <img src="/../public/images/pictures/kon de leche.png" alt="Molten Chocolate Drizzle" loading="lazy" />
+              <span class="card-price">₱120 per dozen</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name"><span>Kon de Leche</span></h3>
+              <p class="card-desc">A towering stack of our signature dough, drizzled with warm cocoa ganache.</p>
+            </div>
+          </article>
+        </a>
+
+              <a href="product.html" class="card-link">
+              <article class="card">
+            <div class="card-img-wrap">
+              <span class="card-num"></span>
+              <img src="/../public/images/pictures/molten clasic.png" alt="Molten Chocolate Drizzle" loading="lazy" />
+              <span class="card-price">₱120 per dozen</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name"><span>Molten CLassic</span></h3>
+              <p class="card-desc">A towering stack of our signature dough, drizzled with warm cocoa ganache.</p>
+            </div>
+          </article>
+        </a>
+
+        <a href="product.html" class="card-link">
+        <article class="card">
+            <div class="card-img-wrap">
+              <span class="card-num"></span>
+              <img src="/../public/images/pictures/matcha white.png" alt="Molten Chocolate Drizzle" loading="lazy" />
+              <span class="card-price">₱120 per dozen</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-name"><span>Matcha White</span></h3>
+              <p class="card-desc">A towering stack of our signature dough, drizzled with warm cocoa ganache.</p>
+            </div>
+          </article>
+        </a>
+        </div>
+      </section>
+
+  <!-- ═══════════════════  FEATURED PRODUCTS  ═══════════════════ -->
+  <section id="products" class="bg-background-light text-black py-20 md:py-28">
+    <div class="container max-w-7xl mx-auto px-6">
+
+      <div class="reveal text-center mb-20 select-none">
+        <h2 class="products-title text-5xl md:text-7xl font-black leading-none tracking-tighter uppercase">
+          FEATURED<br><span class="text-primary">PRODUCTS</span>
+        </h2>
+      </div>
+
+      <div class="products-grid grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
+
+        <a href="product.html" class="product-card-link">
+        <div class="product-card reveal group cursor-pointer">
+          <div class="product-img-wrap relative overflow-hidden w-full aspect-square rounded-2xl bg-gray-50">
+            <img
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
+              src="/../public/assets/pictures/Classic cookies.png"
+              alt="Molten Classic"
+            />
+          </div>
+          <h3 class="product-name text-xl font-bold tracking-tight p-3 mb-2 mt-4">Classic Choco Chip</h3>
+          <p class="product-desc text-sm opacity-60 p-3 leading-relaxed max-w-sm">
+            Our signature cookie — crispy edges, molten chocolate center. The one that started it all.
+          </p>
+        </div>
+        </a>
+
+
+        <a href="product.html" class="product-card-link">
+        <div class="product-card reveal group cursor-pointer">
+          <div class="product-img-wrap relative overflow-hidden w-full aspect-square rounded-2xl bg-gray-50">
+            <img
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
+              src="/../public/assets/pictures/molten clasic.png"
+              alt="Molten Classic"
+            />
+          </div>
+          <h3 class="product-name text-xl font-bold tracking-tight p-3 mb-2 mt-4">Molten Classic</h3>
+          <p class="product-desc text-sm opacity-60 p-3 leading-relaxed max-w-sm">
+            Made with real Nutella filling.Topped with rich dark chocolate chunks.
+          </p>
+        </div>
+        </a>
+
+        <a href="product.html" class="product-card-link">
+        <div class="product-card reveal group cursor-pointer">
+          <div class="product-img-wrap relative overflow-hidden w-full aspect-square rounded-2xl bg-gray-50">
+            <img
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
+              src="/../public/assets/pictures/crinkles.png"
+              alt="Crinkles"
+            />
+          </div>
+          <h3 class="product-name text-xl font-bold tracking-tight p-3 mb-2 mt-4">Crinkles</h3>
+          <p class="product-desc text-sm opacity-60 p-3 leading-relaxed max-w-sm">
+            Soft, powdery, and fudgy — our crinkles are a Iligan crowd favourite you won't want to miss.
+          </p>
+        </div>
+        </a>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  TESTIMONIALS  ═══════════════════ -->
+  <section id="testimonials">
+    <div class="container">
+
+      <div class="reveal">
+        <h2 class="testimonials-title">AND <span>THE COOKIE DOUGH</span> HAS FANS</h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Excellent experience, best cookies in Iligan! I never leave disappointed — every single time is just perfect.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div>
+              <p class="testimonial-name">Maria Santos</p>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="transition-delay: 100ms;">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">The cookies here are unlike anything I've tried before. That gooey center gets me every time. Absolutely obsessed!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div>
+              <p class="testimonial-name">Juan dela Cruz</p>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="transition-delay: 200ms;">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Excellent service, attentive and welcoming staff! Not to mention the absolute delight that is eating a TCD cookie! 😊</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div>
+              <p class="testimonial-name">Ana Reyes</p>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  FOOTER  ═══════════════════ -->
+  <footer id="footer">
+    <div class="container">
+
+      <div class="footer-top">
+        <div class="footer-enjoy">ENJOY</div>
+        <div class="footer-enjoy">EATING</div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/thatcookiedough.ph/" class="social-btn" aria-label="Instagram" target = "_blank">IG</a>
+          <a href="https://web.facebook.com/ThatCookieDoughIligan" class="social-btn" aria-label="Facebook" target = "_blank">FB</a>
+        </div>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a class="footer-link" href="#">Home</a>
+        <a class="footer-link" href="#">Our Products</a>
+        <a class="footer-link" href="#">Locations</a>
+        <a class="footer-link" href="#">About Us</a>
+        <a class="footer-link" href="#">Privacy Policy</a>
+        <a class="footer-link" href="#">Order Now</a>
+      </nav>
+
+      <div class="footer-bottom">
+        <p>© 2023 That Cookie Dough. All rights reserved.</p>
+        <p>Made with ❤ in Iligan City</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════  SCRIPTS  ═══════════════════ -->
+
+  <!-- 3D tilt effect (external — unchanged) -->
+  <script src="../scripts/3deffect.js"></script>
+
+  <!-- Marquee init -->
+  <script src="../scripts/functions/marquee2.js"></script>
+
+  <script>
+    /* ─── SLIDESHOW CONTROLLER ────────────────────────── */
+    (function () {
+      'use strict';
+
+      const INTERVAL    = 4200;
+      const slides      = Array.from(document.querySelectorAll('.slide'));
+      const dotsWrap    = document.getElementById('slideDots');
+      let   current     = 0;
+      let   autoTimer   = null;
+      let   isAnimating = false;
+
+      /* Build dots */
+      slides.forEach(function (_, i) {
+        const d = document.createElement('button');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', function () { goTo(i); });
+        dotsWrap.appendChild(d);
+      });
+
+      function getDots() {
+        return Array.from(dotsWrap.querySelectorAll('.dot'));
+      }
+
+      function goTo(n) {
+        if (isAnimating || n === current) return;
+        isAnimating = true;
+
+        const prev = current;
+        current = n;
+
+        slides[prev].classList.remove('slide-active');
+        slides[prev].classList.add('slide-exit');
+        slides[current].classList.add('slide-active');
+
+        getDots().forEach(function (d, i) {
+          d.classList.toggle('active', i === current);
+        });
+
+        if (window.update3DTarget) window.update3DTarget();
+
+        const exitEl = slides[prev];
+        function cleanup() {
+          exitEl.classList.remove('slide-exit');
+          exitEl.removeEventListener('transitionend', cleanup);
+          isAnimating = false;
+        }
+        exitEl.addEventListener('transitionend', cleanup);
+      }
+
+      function startAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(function () {
+          goTo((current + 1) % slides.length);
+        }, INTERVAL);
+      }
+
+      /* Init */
+      slides[0].classList.add('slide-active');
+      startAuto();
+
+      /* Pause on hover */
+      const scene = document.getElementById('slideshowScene');
+      scene.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
+      scene.addEventListener('mouseleave', startAuto);
+
+      /* Swipe */
+      let touchStartX = 0;
+      scene.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      scene.addEventListener('touchend', function (e) {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) {
+          goTo(dx < 0
+            ? (current + 1) % slides.length
+            : (current - 1 + slides.length) % slides.length);
+        }
+      }, { passive: true });
+
+    })();
+
+    /* ─── NAV SCROLL ──────────────────────────────────── */
+    (function () {
+      const nav = document.getElementById('main-nav');
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+    })();
+
+    /* ─── SCROLL REVEAL ───────────────────────────────── */
+    (function () {
+      function reveal() {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+            el.classList.add('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', reveal, { passive: true });
+      reveal();
+    })();
+
+    /* ─── PARALLAX (mouse) ────────────────────────────── */
+    window.addEventListener('mousemove', function (e) {
+      document.querySelectorAll('.parallax-item').forEach(function (item) {
+        const speed = 40;
+        const x = (window.innerWidth  - e.pageX * speed) / 100;
+        const y = (window.innerHeight - e.pageY * speed) / 100;
+        item.style.transform = 'translateX(' + x + 'px) translateY(' + y + 'px)';
+      });
+    });
+
+    /* ─── 3D TILT INIT ────────────────────────────────── */
+    window.addEventListener('DOMContentLoaded', function () {
+      if (typeof window.init3DEffect === 'function') {
+        window.init3DEffect();
+      }
+    });
+
+  </script>
+
+</body>
+</html>

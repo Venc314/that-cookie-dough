@@ -1,0 +1,29 @@
+# Ignore node modules and dependencies
+node_modules/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+
+# Ignore IDE files
+.vscode
+.vscode/
+
+# Ignore cache
+.cache
+.cache/
+
+# Ignore environment variables
+.env
+.env.local
+
+# Ignore heavy zip backups inside assets
+public/assets/*.zip
+
+# Ignore Vercel CLI locally
+.vercel/
+
+# Ignore temporary script output
+replace_paths.js

@@ -1,0 +1,81 @@
+/* ═══════════════════════════════════════════
+   marquee2.css  —  Infinite scrolling strip
+═══════════════════════════════════════════ */
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: var(--red, #c4552c);
+  padding: 1rem 0;
+  position: relative;
+  /* Soft edge fade so text trails off cleanly */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+/* Track — scrolls its children */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+/* Pause via JS-set style */
+.marquee-track[style*="paused"] {
+  animation-play-state: paused;
+}
+
+/* One content block */
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0 2.5rem;
+  white-space: nowrap;
+}
+
+.marquee-content span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(0.78rem, 1.2vw, 0.95rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.92;
+  user-select: none;
+}
+
+/* Decorative separator dot between items */
+.marquee-content span:not(:last-child)::after {
+  content: '·';
+  margin-left: 2.5rem;
+  opacity: 0.5;
+}
+
+/* Scroll keyframe — moves exactly one content-block width */
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Reduced-motion respect ── */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    justify-content: center;
+    width: 100%;
+  }
+}
