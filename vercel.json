@@ -3,10 +3,20 @@
     { "source": "/", "destination": "/index.html" },
     { "source": "/home", "destination": "/index.html" },
     { "source": "/homepage", "destination": "/pages/homepage.html" },
+    { "source": "/homepage.html", "destination": "/pages/homepage.html" },
+    { "source": "/pages/homepage", "destination": "/pages/homepage.html" },
     { "source": "/product", "destination": "/pages/product.html" },
+    { "source": "/product.html", "destination": "/pages/product.html" },
+    { "source": "/pages/product", "destination": "/pages/product.html" },
     { "source": "/product2", "destination": "/pages/product2.html" },
+    { "source": "/product2.html", "destination": "/pages/product2.html" },
+    { "source": "/pages/product2", "destination": "/pages/product2.html" },
     { "source": "/productinfo", "destination": "/pages/productinfo.html" },
-    { "source": "/productinfo2", "destination": "/pages/productinfo2.html" }
+    { "source": "/productinfo.html", "destination": "/pages/productinfo.html" },
+    { "source": "/pages/productinfo", "destination": "/pages/productinfo.html" },
+    { "source": "/productinfo2", "destination": "/pages/productinfo2.html" },
+    { "source": "/productinfo2.html", "destination": "/pages/productinfo2.html" },
+    { "source": "/pages/productinfo2", "destination": "/pages/productinfo2.html" }
   ],
   "cleanUrls": true,
   "trailingSlash": false
