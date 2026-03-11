@@ -1,23 +1,135 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/home", "destination": "/index.html" },
-    { "source": "/homepage", "destination": "/pages/homepage.html" },
-    { "source": "/homepage.html", "destination": "/pages/homepage.html" },
-    { "source": "/pages/homepage", "destination": "/pages/homepage.html" },
-    { "source": "/product", "destination": "/pages/product.html" },
-    { "source": "/product.html", "destination": "/pages/product.html" },
-    { "source": "/pages/product", "destination": "/pages/product.html" },
-    { "source": "/product2", "destination": "/pages/product2.html" },
-    { "source": "/product2.html", "destination": "/pages/product2.html" },
-    { "source": "/pages/product2", "destination": "/pages/product2.html" },
-    { "source": "/productinfo", "destination": "/pages/productinfo.html" },
-    { "source": "/productinfo.html", "destination": "/pages/productinfo.html" },
-    { "source": "/pages/productinfo", "destination": "/pages/productinfo.html" },
-    { "source": "/productinfo2", "destination": "/pages/productinfo2.html" },
-    { "source": "/productinfo2.html", "destination": "/pages/productinfo2.html" },
-    { "source": "/pages/productinfo2", "destination": "/pages/productinfo2.html" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "pages/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "styles/*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "scripts/**/*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
   ],
-  "cleanUrls": true,
-  "trailingSlash": false
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/index.html",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/home",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/homepage",
+      "dest": "/pages/homepage.html"
+    },
+    {
+      "src": "/homepage.html",
+      "dest": "/pages/homepage.html"
+    },
+    {
+      "src": "/pages/homepage",
+      "dest": "/pages/homepage.html"
+    },
+    {
+      "src": "/pages/homepage.html",
+      "dest": "/pages/homepage.html"
+    },
+    {
+      "src": "/product",
+      "dest": "/pages/product.html"
+    },
+    {
+      "src": "/product.html",
+      "dest": "/pages/product.html"
+    },
+    {
+      "src": "/pages/product",
+      "dest": "/pages/product.html"
+    },
+    {
+      "src": "/pages/product.html",
+      "dest": "/pages/product.html"
+    },
+    {
+      "src": "/product2",
+      "dest": "/pages/product2.html"
+    },
+    {
+      "src": "/product2.html",
+      "dest": "/pages/product2.html"
+    },
+    {
+      "src": "/pages/product2",
+      "dest": "/pages/product2.html"
+    },
+    {
+      "src": "/pages/product2.html",
+      "dest": "/pages/product2.html"
+    },
+    {
+      "src": "/productinfo",
+      "dest": "/pages/productinfo.html"
+    },
+    {
+      "src": "/productinfo.html",
+      "dest": "/pages/productinfo.html"
+    },
+    {
+      "src": "/pages/productinfo",
+      "dest": "/pages/productinfo.html"
+    },
+    {
+      "src": "/pages/productinfo.html",
+      "dest": "/pages/productinfo.html"
+    },
+    {
+      "src": "/productinfo2",
+      "dest": "/pages/productinfo2.html"
+    },
+    {
+      "src": "/productinfo2.html",
+      "dest": "/pages/productinfo2.html"
+    },
+    {
+      "src": "/pages/productinfo2",
+      "dest": "/pages/productinfo2.html"
+    },
+    {
+      "src": "/pages/productinfo2.html",
+      "dest": "/pages/productinfo2.html"
+    },
+    {
+      "src": "/styles/(.*)",
+      "dest": "/styles/$1"
+    },
+    {
+      "src": "/scripts/(.*)",
+      "dest": "/scripts/$1"
+    },
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
