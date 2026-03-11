@@ -1,18 +1,10 @@
 {
   "rewrites": [
-    {
-      "source": "/",
-      "destination": "/pages/homepage.html"
-    },
-    {
-      "source": "/product",
-      "destination": "/pages/product.html"
-    },
-    {
-      "source": "/productinfo",
-      "destination": "/pages/productinfo.html"
-    }
-    
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/home", "destination": "/index.html" },
+    { "source": "/homepage", "destination": "/pages/homepage.html" },
+    { "source": "/product", "destination": "/pages/product.html" },
+    { "source": "/productinfo", "destination": "/pages/productinfo.html" }
   ],
   "cleanUrls": true,
   "trailingSlash": false
