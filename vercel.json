@@ -11,15 +11,8 @@
     {
       "source": "/productinfo",
       "destination": "/pages/productinfo.html"
-    },
-    {
-      "source": "/product2",
-      "destination": "/pages/product2.html"
-    },
-    {
-      "source": "/productinfo2",
-      "destination": "/pages/productinfo2.html"
     }
+    
   ],
   "cleanUrls": true,
   "trailingSlash": false
